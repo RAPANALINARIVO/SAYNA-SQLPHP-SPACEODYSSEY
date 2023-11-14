@@ -3,9 +3,9 @@
 namespace app\Controllers;
 use kernel\View;
 use kernel\Controller;
-use app\Models\Planetes;
+use app\Models\Astraunotes;
 
-class PlanetesController extends Controller
+class AstraunotesController extends Controller
 {
 
     /**
@@ -15,8 +15,8 @@ class PlanetesController extends Controller
      */
     public function index()
     {
-        $planetes=Planetes::all();
-        return new View('planetes/index.php',['planete'=>$planetes]);
+        $astro=Astraunotes::all();
+        return new View('astraunotes/index.php',['astro'=>$astro]);
     }
 
     /**
@@ -26,33 +26,33 @@ class PlanetesController extends Controller
      */
     public function edit()
     {
-        $planetes = Planetes::find($_GET['planete']);
-        return new View('planetes/form.php', ['planete' => $planetes]);
+        $astro = Astraunotes::find($_GET['astro']);
+        return new View('astraunotes/form.php', ['astro' => $astro]);
     }
 
     public function update()
     {
 
-        $planetes = Planetes::find($_POST['idPlanete']);
-        $planetes->nomPlanete = $_POST['nomPlanete'];
-        $planetes->distanceTerre =$_POST['distanceTerre'];
-        $planetes->save();
+        $astro = Astraunotes::find($_POST['idAstro']);
+        $astro->nom = $_POST['nom'];
+        $astro->prenom =$_POST['prenom'];
+        $astro->save();
 
-        header('Location:.?controller=Planetes&action=index');
+        header('Location:.?controller=Astraunotes&action=index');
     }
 
     public function delete()
     {
-        $planetes = Planetes::find($_GET['planete']);
-        return new View('planetes/confirmDelete.php', ['planete' => $planetes]);
+        $astro = Astraunotes::find($_GET['astro']);
+        return new View('astraunotes/confirmDelete.php', ['astro' => $astro]);
     }
 
     public function deleteConfirm()
     {
-        $planetes =Planetes::find($_POST['idPlanete']);
-        $planetes->delete();
+        $astro =Astraunotes::find($_POST['idAstro']);
+        $astro->delete();
 
-        header('Location:.?controller=Planetes&action=index');
+        header('Location:.?controller=Astraunotes&action=index');
     }
     
     /**
@@ -70,18 +70,18 @@ class PlanetesController extends Controller
                 // Ajoutez d'autres champs si nécessaire
             ];
 
-            // Instancier un nouvel objet Pays
-            $newPays = new Planetes();
+            // Instancier un nouvel objet astraunote
+            $newAstro = new Astraunotes();
 
             // Appeler la méthode create du modèle pour insérer les données
-            $newPays->create($postData);
+            $newAstro->create($postData);
 
             // Rediriger vers la page d'index après la création
-            header('Location: .?controller=Planetes&action=index');
+            header('Location: .?controller=Astraunotes&action=index');
             exit; // Assurez-vous de terminer le script après la redirection
         } else {
             // Afficher le formulaire de création
-            return new View('planetes/createForm.php',$data=[]);
+            return new View('astraunotes/createForm.php',$data=[]);
         }
     }
 
