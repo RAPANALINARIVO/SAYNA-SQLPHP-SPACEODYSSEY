@@ -11,7 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href=".?controller=Astronautes&action=create">Astraunote</a></li>
+            <li class="breadcrumb-item"><a href=".?controller=Astronautes&action=create">New mission</a></li>
+              <li class="breadcrumb-item"><a href=".?controller=Astronautes&action=create">New astronaute</a></li>
               <li class="breadcrumb-item"><a href=".?controller=Planetes&action=create">New Planete</a></li>
               <li class="breadcrumb-item active">contact-nous</li>
             </ol>
